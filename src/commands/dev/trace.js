@@ -4,7 +4,7 @@ const { runProcess } = require('../../utils/traffic-mesh')
 class TraceCommand extends Command {
   async run() {
     const args = ['trace'].concat(this.argv)
-    const { subprocess } = await runProcess({ log: this.log, args })
+    const { subprocess } = runProcess({ log: this.log, args })
     await subprocess
 
     await this.config.runHook('analytics', {
@@ -17,7 +17,7 @@ class TraceCommand extends Command {
 }
 
 TraceCommand.description = `Trace command
-Simulates Netlify's Edge routing logic to match specific requests. 
+Simulates Netlify's Edge routing logic to match specific requests.
 This command is designed to mimic cURL's command line, so the flags are more familiar.
 `
 
